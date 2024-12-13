@@ -22,14 +22,39 @@ server.listen(5000, ()=>{
     // },2000)
     console.log("server is runing on 5000")
 })
+// var input= document.getElementById("inp");
 
 io.on('connection',(socket)=>{
-    console.log("a user is connected")
+    console.log(" user is connected")
 
 
-    setInterval(() => {
+    // setInterval(() => {
         
-    socket.emit("event-from-server")
-    }, 2000);
+    // socket.emit("event-from-server")
+    // }, 2000);
+
+    // setInterval(() => {
+    //     socket.emit("event form others")
+        
+    // }, 5000);
+
+    // io.on("msg-from-others", (data)=>{
+    //     console.log("coming data", data)
+    //     const div= document.createElement("div")
+    //     div.innerText=data.msg;
+    //     document.body.append(div)
+    // })
+    socket.on('msg-from-others', (data)=>{
+        console.log("hey");
+        console.log(data)
+    })
+
+
+   
+    socket.emit("message-from-pushkar",{
+        msg:"welcome to the chat"
+    })
+   
 
 })
+
